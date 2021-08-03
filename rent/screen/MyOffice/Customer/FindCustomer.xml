@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd"
+        default-menu-title="Find Customer"
+        default-menu-include="false">
+
+
+<!--    <transition name="editCustomer">
+        <default-response url="../EditCustomer"/>
+    </transition>-->
+    <transition name="updateCustomer">
+        <actions>
+            <service-call name="office.customer.CustomerServices.update#Customer" in-map="context" out-map="context"/>
+        </actions>
+        <default-response url="."/>
+    </transition>
+    <transition name="createCustomer">
+        <service-call name="office.customer.CustomerServices.create#Customer"/>
+        <default-response url="."/>
+    </transition>
+
+    <actions>
+        <entity-find entity-name="moqui.rent.Customer" list="customerList">
+            <search-form-inputs default-order-by="customerFname"/>
+        </entity-find>
+    </actions>
+
+    <widgets>
+        <container-box>
+            <box-header>
+                <label text="Find Customer" type="h5"/>
+            </box-header>
+            <box-toolbar>
+                <container-dialog id="CreateCustomerContainer" button-text="New Customer" width="800">
+
+                    <form-single name="CreateCustomer" transition="createCustomer">
+
+<!--                      <auto-fields-entity entity-name="moqui.rent.Customer" field-type="edit">
+                          <exclude field-name="customerId"/>
+                      </auto-fields-entity>-->
+
+                        <field name="customerId">
+                            <default-field>
+                                <hidden/>
+                            </default-field>
+                        </field>
+                        <field name="customerNumber" from="customerId">
+                            <default-field>
+                                <hidden/>
+                            </default-field>
+                        </field>
+                        <field name="customerFname">
+                            <default-field>
+                                <text-line/>
+                            </default-field>
+                        </field>
+                        <field name="customerLname">
+                            <default-field>
+                                <text-line/>
+                            </default-field>
+                        </field>
+                        <field name="carType" >
+                            <default-field title="Choose a car">
+                                <drop-down>
+                                    <entity-options key="${carType} - ${carPrice}" text="${carType} - ${carPrice}">
+                                        <entity-find entity-name="moqui.rent.Car">
+                                            <order-by field-name="carPrice"/></entity-find>
+                                    </entity-options></drop-down>
+                            </default-field>
+                        </field>
+                        <field name="submitBtn">
+                            <default-field title="Create">
+                                <submit/>
+                            </default-field>
+                        </field>
+
+                    </form-single>
+                </container-dialog>
+                <container-dialog id="UpdateCustomerContainer" button-text="Edit Customer" width="800">
+                    <form-single name="UpdateCustomer" transition="updateCustomer">
+                        <field name="customerId">
+                            <default-field>
+                        <radio>
+                            <entity-options text="${customerId}">
+                                <entity-find entity-name="moqui.rent.Customer"/>
+                            </entity-options>
+                        </radio>
+                            </default-field>
+                        </field>
+                        <field name="customerNumber">
+                            <default-field>
+                                <text-line/>
+                            </default-field>
+                        </field>
+                        <field name="customerFname">
+                            <default-field>
+                                <text-line/>
+                            </default-field>
+                        </field>
+                        <field name="customerLname">
+                            <default-field>
+                                <text-line/>
+                            </default-field>
+                        </field>
+                        <field name="submitBtn">
+                            <default-field title="Update">
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                </container-dialog>
+            </box-toolbar>
+         <box-body>
+                <form-list name="CustomerList" list="customerList" skip-form="true" header-dialog="true" select-columns="true">
+                    <field name="customerId">
+                        <header-field show-order-by="true" title="ID">
+                            <text-find hide-options="true" size="10"/>
+                        </header-field>
+<!--                       <default-field>
+                          <link url="editCustomer" text="${customerId}"/>
+                           <display/>
+                        </default-field>-->
+                    </field>
+                    <field name="customerFname">
+                        <header-field show-order-by="true" title="Name">
+                            <text-find hide-options="true"/>
+                        </header-field>
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="customerLname">
+                        <header-field show-order-by="true" title="Name">
+                            <text-find hide-options="true"/>
+                        </header-field>
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="carId">
+                        <header-field show-order-by="true">
+                            <text-find hide-options="true"/>
+                        </header-field>
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="find">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                    </field>
+<!--                    <form-list-column>
+                        <field-ref name="customerId"/>
+                    </form-list-column>
+                    <form-list-column>
+                        <field-ref name="customerNumber"/>
+                    </form-list-column>-->
+                    <form-list-column>
+                        <field-ref name="customerFname"/>
+                    </form-list-column>
+                    <form-list-column>
+                        <field-ref name="customerLname"/>
+                    </form-list-column>
+                    <form-list-column>
+                        <field-ref name="carId"/>
+                    </form-list-column>
+                </form-list>
+            </box-body>
+        </container-box>
+    </widgets>
+</screen>
+

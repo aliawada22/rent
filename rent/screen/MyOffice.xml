@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd"
+        default-menu-title="Office"
+        default-menu-index="99"
+        menu-image="fas fa-building"
+        menu-image-type="icon">
+
+    <subscreens default-item="Dashboard"/>
+    <widgets>
+        <subscreens-panel id="my-office-panel" type="popup"/>
+    </widgets>
+</screen>
+

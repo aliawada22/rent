@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.1.xsd">
+
+    <!-- Customers -->
+    <service verb="create" noun="Customer" type="java" location="com.netvariant.customer.CustomerServices" method="createCustomer">
+        <in-parameters>
+            <!--<parameter name="customerNumber"/>-->
+            <parameter name="customerFname"/>
+            <parameter name="customerLname"/>
+            <parameter name="carId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="customerId"/>
+        </out-parameters>
+    </service>
+
+
+    <service verb="update" noun="Customer" type="java" location="com.netvariant.customer.CustomerServices" method="updateCustomer">
+        <in-parameters>
+            <!--<parameter name="customerNumber"/>-->
+            <parameter name="customerFname"/>
+            <parameter name="customerLname"/>
+            <parameter name="carId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="customerId"/>
+        </out-parameters>
+    </service>
+
+</services>
+

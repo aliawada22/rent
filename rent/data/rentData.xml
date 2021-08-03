@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="seed">
+
+
+    <moqui.rent.Car carId="1"  carType="BMW-X5" carModel="2016" carPrice="166$"/>
+    <moqui.rent.Car carId="2" carType="BMW-X6" carModel="2018" carPrice="220$"/>
+    <moqui.rent.Car carId="3" carType="Infinity-FX35" carModel="2005" carPrice="100$"/>
+
+
+</entity-facade-xml>

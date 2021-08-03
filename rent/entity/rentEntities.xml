@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+
+
+    <!--Car Entity-->
+    <entity entity-name="Car" package="moqui.rent">
+        <field name="carId" type="id" is-pk="true"/>
+        <field name="carType" type="text-medium"/>
+        <field name="carModel" type="text-medium"/>
+        <field name="carPrice" type="currency-amount"/>
+    </entity>
+
+    <!--Customer Entity-->
+    <entity entity-name="Customer" package="moqui.rent">
+        <field name="customerId" type="id" is-pk="true"/>
+        <field name="customerNumber" type="id"/>
+        <field name="customerFname" type="text-medium"/>
+        <field name="customerLname" type="text-medium"/>
+        <field name="carId" type="id"/>
+
+        <relationship type="one" related="moqui.rent.Car">
+            <key-map field-name="carId"/>
+        </relationship>
+    </entity>
+
+</entities>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd"
+        default-menu-title="Dashboard"
+        default-menu-index="1">
+    <widgets>
+     <container-row>
+        <row-col xs="12" sm="6" md="4" lg="3">
+            <container style="border-rounded-4 border-all-1 padding-all-2 margin-all-05 bg-indigo">
+                <container style="text-center margin-b-05 text-white">
+                    <container style="far fa-car fa-3x"/>
+                </container>
+                <container style="text-center">
+                    <link url="../Customer" text="Customer" style="text-24 text-white" link-type="anchor"/>
+                </container>
+            </container>
+        </row-col>
+        </container-row>
+
+    </widgets>
+</screen>
